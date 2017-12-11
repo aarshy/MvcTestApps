@@ -1,0 +1,58 @@
+﻿@model Try1.Models.Student
+
+@{
+    ViewBag.Title = "Edit";
+
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Student</legend>
+
+        @Html.HiddenFor(model => model.StudentId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StudentName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StudentName)
+            @Html.ValidationMessageFor(model => model.StudentName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StudentAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StudentAddress)
+            @Html.ValidationMessageFor(model => model.StudentAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StudentGender)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StudentGender)
+            @Html.ValidationMessageFor(model => model.StudentGender)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" class="btn btn-success" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index",new {@class="btn btn-primary" })
+</div>

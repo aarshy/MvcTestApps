@@ -1,0 +1,112 @@
+﻿@model Try1.Models.CombinedModel
+
+@{
+    ViewBag.Title = "Create main";
+}
+
+<h2>Create</h2>
+
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Register an new Account</div>
+      <div class="card-body">
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    
+    <fieldset>
+        <legend>New Student</legend>
+         <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ViewStudent.StudentName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ViewStudent.StudentName)
+            @Html.ValidationMessageFor(model => model.ViewStudent.StudentName)
+        </div>
+                  </div>
+</div>
+        <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ViewStudent.StudentAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ViewStudent.StudentAddress)
+            @Html.ValidationMessageFor(model => model.ViewStudent.StudentAddress)
+        </div>
+</div>
+        <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ViewStudent.StudentGender)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ViewStudent.StudentGender)
+            @Html.ValidationMessageFor(model => model.ViewStudent.StudentGender)
+        </div>
+</div></div>
+       
+        <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ViewStudent.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ViewStudent.Email)
+            @Html.ValidationMessageFor(model => model.ViewStudent.Email)
+        </div>
+
+</div>
+        <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ViewEnroll.CourseID, "Course")
+        </div>
+            <div class="editor-field">
+                @Html.DropDownList("CourseID")
+                @Html.ValidationMessageFor(model => model.ViewEnroll.CourseID)
+            </div>
+</div>
+        <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ViewEnroll.AplicablePrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ViewEnroll.AplicablePrice)
+            @Html.ValidationMessageFor(model => model.ViewEnroll.AplicablePrice)
+        </div>
+</div>
+        <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ViewInstallment.Paid)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ViewInstallment.Paid)
+            @Html.ValidationMessageFor(model => model.ViewInstallment.Paid)
+        </div>
+</div>
+
+        <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ViewEnroll.ObtainedCredit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ViewEnroll.ObtainedCredit)
+            @Html.ValidationMessageFor(model => model.ViewEnroll.ObtainedCredit)
+        </div>
+</div>
+        
+
+       
+        
+        <p>
+            <input type="submit" value="Create" class="btn btn-success" />
+        </p>
+
+    </fieldset>
+}
+           </div>
+    </div>
+  
+
+
+<div>
+     @Html.ActionLink("Back to List", "Index",null, new {@class="btn btn-primary" })
+</div>

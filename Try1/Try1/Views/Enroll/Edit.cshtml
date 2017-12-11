@@ -1,0 +1,50 @@
+﻿@model Try1.Models.Enroll
+
+@{
+    ViewBag.Title = "Edit";
+    
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Enroll</legend>
+
+        @Html.HiddenFor(model => model.EnrollId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StudentID, "Student")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("StudentID", String.Empty)
+            @Html.ValidationMessageFor(model => model.StudentID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseID, "Course")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CourseID", String.Empty)
+            @Html.ValidationMessageFor(model => model.CourseID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ObtainedCredit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ObtainedCredit)
+            @Html.ValidationMessageFor(model => model.ObtainedCredit)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" class="btn btn-success" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index",new {@class="btn btn-primary" })
+</div>

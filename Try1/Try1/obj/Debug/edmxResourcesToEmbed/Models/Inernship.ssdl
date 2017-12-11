@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ItTrainingModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ItTrainingModelStoreContainer">
+    <EntitySet Name="Course" EntityType="ItTrainingModel.Store.Course" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Enroll" EntityType="ItTrainingModel.Store.Enroll" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Installment" EntityType="ItTrainingModel.Store.Installment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Student" EntityType="ItTrainingModel.Store.Student" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="fk_courseID" Association="ItTrainingModel.Store.fk_courseID">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Enroll" EntitySet="Enroll" />
+    </AssociationSet>
+    <AssociationSet Name="fk_InstCour" Association="ItTrainingModel.Store.fk_InstCour">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Installment" EntitySet="Installment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_InstEnroll" Association="ItTrainingModel.Store.fk_InstEnroll">
+      <End Role="Enroll" EntitySet="Enroll" />
+      <End Role="Installment" EntitySet="Installment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_InstStd" Association="ItTrainingModel.Store.fk_InstStd">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Installment" EntitySet="Installment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_studentID" Association="ItTrainingModel.Store.fk_studentID">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Enroll" EntitySet="Enroll" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="varchar" MaxLength="50" />
+    <Property Name="CourseCredit" Type="int" />
+    <Property Name="CoursePrice" Type="float" />
+  </EntityType>
+  <EntityType Name="Enroll">
+    <Key>
+      <PropertyRef Name="EnrollId" />
+    </Key>
+    <Property Name="EnrollId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="CourseID" Type="int" />
+    <Property Name="ObtainedCredit" Type="int" />
+  </EntityType>
+  <EntityType Name="Installment">
+    <Key>
+      <PropertyRef Name="InstallmentId" />
+    </Key>
+    <Property Name="InstallmentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="CourseId" Type="int" />
+    <Property Name="EnrollmentId" Type="int" />
+    <Property Name="Paid" Type="float" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StudentName" Type="varchar" MaxLength="50" />
+    <Property Name="StudentAddress" Type="varchar" MaxLength="50" />
+    <Property Name="StudentGender" Type="varchar" MaxLength="7" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="fk_courseID">
+    <End Role="Course" Type="ItTrainingModel.Store.Course" Multiplicity="0..1" />
+    <End Role="Enroll" Type="ItTrainingModel.Store.Enroll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="Enroll">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_InstCour">
+    <End Role="Course" Type="ItTrainingModel.Store.Course" Multiplicity="0..1" />
+    <End Role="Installment" Type="ItTrainingModel.Store.Installment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="Installment">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_InstEnroll">
+    <End Role="Enroll" Type="ItTrainingModel.Store.Enroll" Multiplicity="0..1" />
+    <End Role="Installment" Type="ItTrainingModel.Store.Installment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enroll">
+        <PropertyRef Name="EnrollId" />
+      </Principal>
+      <Dependent Role="Installment">
+        <PropertyRef Name="EnrollmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_InstStd">
+    <End Role="Student" Type="ItTrainingModel.Store.Student" Multiplicity="0..1" />
+    <End Role="Installment" Type="ItTrainingModel.Store.Installment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Installment">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_studentID">
+    <End Role="Student" Type="ItTrainingModel.Store.Student" Multiplicity="0..1" />
+    <End Role="Enroll" Type="ItTrainingModel.Store.Enroll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Enroll">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,63 @@
+﻿@model Try1.Models.Enroll
+
+@{
+    ViewBag.Title = "Create enroll";
+    
+}
+
+<h2>Create</h2>
+<div class="card card-register mx-auto mt-5">
+      <div class="card-header">Create a New Enroll</div>
+      <div class="card-body">
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Enroll</legend>
+        <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StudentID, "Student")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("StudentID", String.Empty)
+            @Html.ValidationMessageFor(model => model.StudentID)
+        </div>
+</div>
+        <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseID, "Course")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CourseID", String.Empty)
+            @Html.ValidationMessageFor(model => model.CourseID)
+        </div>
+</div>
+        <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ObtainedCredit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ObtainedCredit)
+            @Html.ValidationMessageFor(model => model.ObtainedCredit)
+        </div>
+</div>
+        <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AplicablePrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AplicablePrice)
+            @Html.ValidationMessageFor(model => model.AplicablePrice)
+        </div>
+</div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+          </div>
+    </div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index",null, new {@class="btn btn-primary" })
+</div>

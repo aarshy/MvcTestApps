@@ -1,0 +1,37 @@
+﻿@model Try1.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+    
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Course</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CourseName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CourseName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CourseCredit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CourseCredit)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CoursePrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CoursePrice)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CourseId }, new {@class="btn btn-warning" }) |
+    @Html.ActionLink("Back to List", "Index",null, new {@class="btn btn-primary" })
+</p>

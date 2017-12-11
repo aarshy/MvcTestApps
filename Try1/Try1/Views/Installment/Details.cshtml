@@ -1,0 +1,29 @@
+﻿@model Try1.Models.Installment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Installment</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Enroll.EnrollId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Enroll.EnrollId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Paid)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Paid)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.InstallmentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

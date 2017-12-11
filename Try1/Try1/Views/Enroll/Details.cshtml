@@ -1,0 +1,37 @@
+﻿@model Try1.Models.Enroll
+
+@{
+    ViewBag.Title = "Details";
+    
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Enroll</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Student.StudentName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Student.StudentName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Course.CourseName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Course.CourseName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ObtainedCredit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ObtainedCredit)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.EnrollId },new{@class="btn btn-warning"}) |
+    @Html.ActionLink("Back to List", "Index",new {@class="btn btn-primary" })
+</p>

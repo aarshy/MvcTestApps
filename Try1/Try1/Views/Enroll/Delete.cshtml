@@ -1,0 +1,40 @@
+﻿@model Try1.Models.Enroll
+
+@{
+    ViewBag.Title = "Delete";
+    
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Enroll</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Student.StudentName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Student.StudentName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Course.CourseName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Course.CourseName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ObtainedCredit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ObtainedCredit)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" class="btn btn success" /> |
+        @Html.ActionLink("Back to List", "Index", new {@class="btn btn-primary" })
+    </p>
+}
